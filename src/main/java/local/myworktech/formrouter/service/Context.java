@@ -1,8 +1,6 @@
 package local.myworktech.formrouter.service;
 
-import local.myworktech.formrouter.visual.controllers.ParentController;
-import local.myworktech.formrouter.visual.controllers.RootController;
-import local.myworktech.formrouter.visual.controllers.UserInfoPanelController;
+import local.myworktech.formrouter.visual.controllers.*;
 
 public class Context {
 
@@ -15,12 +13,19 @@ public class Context {
 
     private void start() {
         registerControllers();
-        router.showStartFrame();
+        try {
+            router.showStartFrame();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void registerControllers() {
-        router.registerController("userInfoPanel", UserInfoPanelController.class);
-        router.registerController("rootFrame", RootController.class);
-        router.registerController("parentPanel", ParentController.class);
+        router.registerController("userInfoPanel", new UserInfoPanelController(this));
+        router.registerController("rootFrame", new RootController(this));
+        router.registerController("parentPanel", new ParentController(this));
+        router.registerController("signupDialog", new SignupController(this));
+        router.registerController("loginDialog", new LoginController(this));
+
     }
 }

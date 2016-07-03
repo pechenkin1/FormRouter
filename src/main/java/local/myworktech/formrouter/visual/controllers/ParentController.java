@@ -5,6 +5,8 @@ import local.myworktech.formrouter.visual.abs.AbstractController;
 import local.myworktech.formrouter.visual.forms.ParentPanel;
 import lombok.Getter;
 
+import java.awt.*;
+
 @Getter
 public class ParentController extends AbstractController {
     public ParentController(Context context) {
@@ -16,4 +18,15 @@ public class ParentController extends AbstractController {
         myForm = new ParentPanel(this);
 //        myForm.view();
     }
+
+    @Override
+    public void instantiateMyDialog(Frame owner) {
+        try {
+            throw new Exception("Not supported");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

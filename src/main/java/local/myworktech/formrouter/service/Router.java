@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class Router<T extends Controller> {
+public class Router {
 
     private static Router router = new Router();
     private ControllersProvider controllersProvider = new ControllersProvider();
@@ -17,37 +17,31 @@ public class Router<T extends Controller> {
         return router;
     }
 
-    void registerController(String name, Class<T> controllerClass) {
-        controllersProvider.registerController(name, controllerClass);
+    void registerController(String name, Controller controller) {
+        controllersProvider.registerController(name, controller);
     }
 
-    void showStartFrame() {
+    void showStartFrame() throws Exception {
         Controller c = controllersProvider.get("rootFrame");
         c.instantiateMyForm();
         c.getMyForm().view();
     }
 
-    public T get(String name) {
+    public Controller get(String name) {
         return controllersProvider.get(name);
     }
 
+
     private class ControllersProvider {
 
-        private Map<String, Class<T>> controllersMap = new HashMap<>();
+        private Map<String, Controller> controllersMap = new HashMap<>();
 
-        void registerController(String name, Class<T> controllerClass) {
-            controllersMap.put(name, controllerClass);
+        void registerController(String name, Controller controller) {
+            controllersMap.put(name, controller);
         }
 
-        private T get(String name) {
-            Class<T> clazz = controllersMap.get(name);
-            try {
-                return clazz.getDeclaredConstructor(Context.class).newInstance(new Context());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return null;
+        private Controller get(String name) {
+            return controllersMap.get(name);
         }
     }
-
 }

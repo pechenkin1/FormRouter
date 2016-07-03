@@ -5,13 +5,13 @@ import local.myworktech.formrouter.visual.abs.Controller;
 import local.myworktech.formrouter.visual.abs.Form;
 
 import javax.swing.*;
-import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
-public class UserInfoDialog extends AbstractDialog {
+public class SignupDialog extends AbstractDialog {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - zxc zxc
@@ -21,24 +21,27 @@ public class UserInfoDialog extends AbstractDialog {
     private JButton okButton;
     private JButton cancelButton;
 
-    public UserInfoDialog(Controller controller) {
-        super(controller);
-
-
-        this.setModal(true);
+    public SignupDialog(Controller controller, Frame owner) {
+        super(controller, owner);
+        setModal(true);
+        setName("Signup dialog");
     }
 
     private void cancelButtonActionPerformed(ActionEvent e) {
-//        controller.closeFormAction();
     }
 
     private void okButtonActionPerformed(ActionEvent e) {
-//        controller.updateUserInfo();
     }
 
     @Override
     public void addForm(Form form) {
-        add((Component) form);
+//        getRootPane().getContentPane().removeAll();
+//        add((Component) form, BorderLayout.CENTER);
+////        pack();
+//        repaint();
+
+//        contentPanel.removeAll();
+        contentPanel.add((Component) form, BorderLayout.CENTER);
         pack();
         repaint();
     }
@@ -61,12 +64,6 @@ public class UserInfoDialog extends AbstractDialog {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
 
-            // JFormDesigner evaluation mark
-            dialogPane.setBorder(new CompoundBorder(
-                    new TitledBorder(new EmptyBorder(0, 0, 0, 0),
-                            "JFormDesigner Evaluation", TitledBorder.CENTER,
-                            TitledBorder.BOTTOM, new Font("Dialog", Font.BOLD, 12),
-                            Color.red), dialogPane.getBorder()));
             dialogPane.addPropertyChangeListener(e -> {
                 if ("border".equals(e.getPropertyName())) throw new RuntimeException();
             });
@@ -105,11 +102,20 @@ public class UserInfoDialog extends AbstractDialog {
         contentPane.add(dialogPane, BorderLayout.CENTER);
         pack();
         setLocationRelativeTo(getOwner());
+        addWindowListener(new WindowAdapter() {
+                              @Override
+                              public void windowOpened(WindowEvent e) {
+                                  try {
+                                      controller.showChildFormOnMe("userInfoPanel");
+                                  } catch (Exception e1) {
+                                      e1.printStackTrace();
+                                  }
+                              }
+                          }
+        );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
+        setVisible(true);
     }
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
 
-    public void addToContentPanel(Component component, Object constraints) {
-        contentPanel.add(component, constraints);
-    }
+    // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

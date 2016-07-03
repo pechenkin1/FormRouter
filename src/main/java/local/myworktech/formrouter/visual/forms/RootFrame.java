@@ -37,14 +37,18 @@ public class RootFrame extends AbstractFrame {
         setSize(700, 400);
         setLocation(getScreenCenter());
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setVisible(true);
 
         addWindowListener(new WindowAdapter() {
                               @Override
                               public void windowOpened(WindowEvent e) {
-                                  controller.showChildFormOnMe("parentPanel");
+                                  try {
+                                      controller.showChildFormOnMe("parentPanel");
+                                  } catch (Exception e1) {
+                                      e1.printStackTrace();
+                                  }
                               }
                           }
         );
+        setVisible(true);
     }
 }

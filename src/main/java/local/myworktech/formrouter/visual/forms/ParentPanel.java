@@ -5,13 +5,13 @@ import info.clearthought.layout.TableLayoutConstraints;
 import local.myworktech.formrouter.visual.abs.AbstractPanel;
 import local.myworktech.formrouter.visual.abs.Controller;
 import local.myworktech.formrouter.visual.abs.Form;
+import local.myworktech.formrouter.visual.forms.exception.NotSupportedToShowException;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class ParentPanel extends AbstractPanel {
-
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - zxc zxc
     private JButton showDialogButton;
@@ -28,8 +28,12 @@ public class ParentPanel extends AbstractPanel {
         throw new NotSupportedToShowException(form, this);
     }
 
-    private void showDialogButtonActionPerformed(ActionEvent e) {
-        controller.showChildFormOnMe("rootFrame");
+    private void showSignupDialogButtonActionPerformed(ActionEvent e) {
+        controller.showDialogOn("signupDialog", "rootFrame");
+    }
+
+    private void showLoginDialogButtonActionPerformed(ActionEvent actionEvent) {
+        controller.showDialogOn("loginDialog", "rootFrame");
     }
 
     @Override
@@ -42,7 +46,6 @@ public class ParentPanel extends AbstractPanel {
         textField1 = new JTextField();
 
         //======== this ========
-        setMinimumSize(new Dimension(122, 70));
         setPreferredSize(new Dimension(200, 70));
 
         // JFormDesigner evaluation mark
@@ -60,8 +63,8 @@ public class ParentPanel extends AbstractPanel {
                 {30, 10, 30, 120}}));
 
         //---- showDialogButton ----
-        showDialogButton.setText("show dialog");
-        showDialogButton.addActionListener(this::showDialogButtonActionPerformed);
+        showDialogButton.setText("Signup");
+        showDialogButton.addActionListener(this::showSignupDialogButtonActionPerformed);
         add(showDialogButton, new TableLayoutConstraints(0, 0, 0, 0, TableLayoutConstraints.FULL, TableLayoutConstraints.FULL));
 
         //---- label1 ----
@@ -70,7 +73,8 @@ public class ParentPanel extends AbstractPanel {
         add(label1, new TableLayoutConstraints(2, 0, 2, 0, TableLayoutConstraints.FULL, TableLayoutConstraints.FULL));
 
         //---- button2 ----
-        button2.setText("text");
+        button2.setText("Login");
+        button2.addActionListener(this::showLoginDialogButtonActionPerformed);
         add(button2, new TableLayoutConstraints(0, 2, 0, 2, TableLayoutConstraints.FULL, TableLayoutConstraints.FULL));
         add(textField1, new TableLayoutConstraints(2, 2, 2, 2, TableLayoutConstraints.FULL, TableLayoutConstraints.FULL));
         // JFormDesigner - End of component initialization  //GEN-END:initComponents

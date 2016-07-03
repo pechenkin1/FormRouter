@@ -12,7 +12,7 @@ new FormModel {
 			"preferredSize": new java.awt.Dimension( 200, 70 )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "showDialogButton"
-				"text": "show dialog"
+				"text": "Sign up"
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "showDialogButtonActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) )
 			add( new FormComponent( "javax.swing.JLabel" ) {

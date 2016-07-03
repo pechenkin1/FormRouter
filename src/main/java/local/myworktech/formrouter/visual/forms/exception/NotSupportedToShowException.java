@@ -1,4 +1,4 @@
-package local.myworktech.formrouter.visual.forms;
+package local.myworktech.formrouter.visual.forms.exception;
 
 import local.myworktech.formrouter.visual.abs.Form;
 import lombok.AllArgsConstructor;
@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import java.text.MessageFormat;
 
 @AllArgsConstructor
-class NotSupportedToShowException extends Exception {
+public class NotSupportedToShowException extends Exception {
 
     private Form child;
     private Form parent;
