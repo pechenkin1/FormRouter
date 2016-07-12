@@ -1,8 +1,8 @@
 package local.myworktech.formrouter.visual.forms;
 
-import local.myworktech.formrouter.visual.abs.AbstractFrame;
-import local.myworktech.formrouter.visual.abs.Controller;
-import local.myworktech.formrouter.visual.abs.Form;
+import local.myworktech.formrouter.visual.abs.controllers.Controller;
+import local.myworktech.formrouter.visual.abs.forms.AbstractFrame;
+import local.myworktech.formrouter.visual.abs.forms.Window;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,32 +23,40 @@ public class RootFrame extends AbstractFrame {
     }
 
     @Override
-    public void addForm(Form form) {
-        getRootPane().getContentPane().removeAll();
-        add((Component) form, BorderLayout.CENTER);
-//        pack();
-        repaint();
-    }
-
-    @Override
     protected void initComponents() {
-        setTitle("Swingui");
+        setTitle("Frame router");
         setLayout(new BorderLayout());
+        initMenu();
         setSize(700, 400);
+        setPreferredSize(getSize());
         setLocation(getScreenCenter());
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
+        setVisible(true);
         addWindowListener(new WindowAdapter() {
                               @Override
                               public void windowOpened(WindowEvent e) {
                                   try {
-                                      controller.showChildFormOnMe("parentPanel");
+                                      controller.add("loginDialog", "rootFrame");
                                   } catch (Exception e1) {
                                       e1.printStackTrace();
                                   }
                               }
                           }
         );
-        setVisible(true);
+
+    }
+
+    private void initMenu() {
+        RootMenu rootMenu = new RootMenu();
+        add(rootMenu.getRootMenuBar(), BorderLayout.NORTH);
+        pack();
+        repaint();
+    }
+
+    @Override
+    public void add(Window window) {
+        add((Component) window, BorderLayout.CENTER);
+//        pack();
+        repaint();
     }
 }

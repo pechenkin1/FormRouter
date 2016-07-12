@@ -1,6 +1,6 @@
 package local.myworktech.formrouter.service;
 
-import local.myworktech.formrouter.visual.abs.Controller;
+import local.myworktech.formrouter.visual.abs.controllers.Controller;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -21,16 +21,9 @@ public class Router {
         controllersProvider.registerController(name, controller);
     }
 
-    void showStartFrame() throws Exception {
-        Controller c = controllersProvider.get("rootFrame");
-        c.instantiateMyForm();
-        c.getMyForm().view();
-    }
-
     public Controller get(String name) {
         return controllersProvider.get(name);
     }
-
 
     private class ControllersProvider {
 

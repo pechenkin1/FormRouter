@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class info.clearthought.layout.TableLayout ) {
-			"$columnSpecs": "5.0, 200.0, 5.0, 158.0, 2.0"
-			"$rowSpecs": "center:pref, center:5.0, center:pref, center:5.0, center:pref, center:5.0, center:pref, center:5.0, center:pref, center:5.0, center:pref, center:5.0, center:pref, center:5.0, center:pref, center:5.0, center:pref, center:5.0, center:pref"
+			"$columnSpecs": "10.0, 200.0, 5.0, 158.0, 2.0"
+			"$rowSpecs": "center:10.0, center:5.0, center:pref, center:5.0, center:pref, center:5.0, center:pref, center:5.0, center:pref, center:5.0, center:pref, center:5.0, center:pref, center:5.0, center:pref, center:5.0, center:pref, center:5.0, center:pref, pref, pref, pref"
 		} ) {
 			name: "this"
 			add( new FormComponent( "javax.swing.JLabel" ) {

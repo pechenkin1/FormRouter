@@ -1,10 +1,18 @@
 package local.myworktech.formrouter.service;
 
+import local.myworktech.formrouter.entity.User;
+import local.myworktech.formrouter.visual.abs.controllers.Controller;
 import local.myworktech.formrouter.visual.controllers.*;
+import lombok.Getter;
+import lombok.Setter;
 
 public class Context {
 
     private Router router = Router.getInstance();
+
+    @Getter
+    @Setter
+    private User currentUser;
 
     public static void startApplication() {
         Context context = new Context();
@@ -13,11 +21,9 @@ public class Context {
 
     private void start() {
         registerControllers();
-        try {
-            router.showStartFrame();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        currentUser = null;
+        Controller rootController = router.get("rootFrame");
+        rootController.createWindow();
     }
 
     private void registerControllers() {
@@ -26,6 +32,9 @@ public class Context {
         router.registerController("parentPanel", new ParentController(this));
         router.registerController("signupDialog", new SignupController(this));
         router.registerController("loginDialog", new LoginController(this));
+    }
 
+    public void quitProgram() {
+        System.exit(0);
     }
 }

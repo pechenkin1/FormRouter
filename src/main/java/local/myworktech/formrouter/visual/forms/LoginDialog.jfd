@@ -5,46 +5,79 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 			name: "this"
-			"minimumSize": new java.awt.Dimension( 200, 200 )
+			"minimumSize": new java.awt.Dimension( 200, 140 )
 			"$locationPolicy": 1
 			"$sizePolicy": 1
 			"modal": true
 			"resizable": false
-			addEvent( new FormEvent( "java.awt.event.WindowListener", "windowOpened", "thisWindowOpened", true ) )
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
-				"$columnSpecs": "0:1.0, 80, 80"
-				"$rowSpecs": "0"
-				"$hGap": 5
-				"$vGap": 5
-			} ) {
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
 				name: "buttonBar"
-				"border": new javax.swing.border.EmptyBorder( 12, 0, 0, 0 )
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"opaque": false
 				add( new FormComponent( "javax.swing.JButton" ) {
-					name: "okButton"
-					"text": "OK"
-				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-					"gridx": 1
-					"gridy": 0
+					name: "loginButton"
+					"text": "Login"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "loginButtonActionPerformed", true ) )
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
-					name: "cancelButton"
-					"text": "Cancel"
-					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "cancelButtonActionPerformed", true ) )
-				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-					"gridx": 2
-					"gridy": 0
+					name: "signupButton"
+					"text": "Signup"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "signupButtonActionPerformed", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "quitButton"
+					"text": "Quit program"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "quitButtonActionPerformed", true ) )
 				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {
-				"value": "Last"
+				"value": "South"
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 				name: "contentPanel"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class info.clearthought.layout.TableLayout ) {
+					"$columnSpecs": "59.0, 130.0, 112.0"
+					"$rowSpecs": "20.0, 20.0, 20.0"
+					"hGap": 5
+					"vGap": 5
+				} ) {
+					name: "loginPanel"
+					"minimumSize": new java.awt.Dimension( 311, 50 )
+					"preferredSize": new java.awt.Dimension( 311, 50 )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label1"
+						"text": "Login"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
+						"gridY": 1
+						"gridX": 1
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "loginField"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
+						"gridX": 2
+						"gridY": 1
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label2"
+						"text": "Password"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
+						"gridY": 2
+						"gridX": 1
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "passwordField"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
+						"gridX": 2
+						"gridY": 2
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {
 				"value": "Center"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 400, 300 )
+			"size": new java.awt.Dimension( 375, 165 )
 		} )
 	}
 }

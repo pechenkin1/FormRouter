@@ -1,15 +1,13 @@
 package local.myworktech.formrouter.visual.forms;
 
-import local.myworktech.formrouter.visual.abs.AbstractDialog;
-import local.myworktech.formrouter.visual.abs.Controller;
-import local.myworktech.formrouter.visual.abs.Form;
+import local.myworktech.formrouter.visual.abs.controllers.Controller;
+import local.myworktech.formrouter.visual.abs.forms.AbstractDialog;
+import local.myworktech.formrouter.visual.abs.forms.Window;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 public class SignupDialog extends AbstractDialog {
 
@@ -21,7 +19,7 @@ public class SignupDialog extends AbstractDialog {
     private JButton okButton;
     private JButton cancelButton;
 
-    public SignupDialog(Controller controller, Frame owner) {
+    public SignupDialog(Controller controller, local.myworktech.formrouter.visual.abs.forms.Window owner) {
         super(controller, owner);
         setModal(true);
         setName("Signup dialog");
@@ -34,17 +32,10 @@ public class SignupDialog extends AbstractDialog {
     }
 
     @Override
-    public void addForm(Form form) {
-//        getRootPane().getContentPane().removeAll();
-//        add((Component) form, BorderLayout.CENTER);
-////        pack();
-//        repaint();
-
-//        contentPanel.removeAll();
+    public void add(Window form) {
         contentPanel.add((Component) form, BorderLayout.CENTER);
-        pack();
-        repaint();
     }
+
 
     @Override
     protected void initComponents() {
@@ -100,21 +91,13 @@ public class SignupDialog extends AbstractDialog {
             dialogPane.add(buttonBar, BorderLayout.SOUTH);
         }
         contentPane.add(dialogPane, BorderLayout.CENTER);
+        controller.add("userInfoPanel");
         pack();
         setLocationRelativeTo(getOwner());
-        addWindowListener(new WindowAdapter() {
-                              @Override
-                              public void windowOpened(WindowEvent e) {
-                                  try {
-                                      controller.showChildFormOnMe("userInfoPanel");
-                                  } catch (Exception e1) {
-                                      e1.printStackTrace();
-                                  }
-                              }
-                          }
-        );
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
         setVisible(true);
+
+        // JFormDesigner - End of component initialization  //GEN-END:initComponents
+//        setVisible(true);
     }
 
     // JFormDesigner - End of variables declaration  //GEN-END:variables

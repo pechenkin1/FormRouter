@@ -1,24 +1,16 @@
 package local.myworktech.formrouter.visual.controllers;
 
 import local.myworktech.formrouter.service.Context;
-import local.myworktech.formrouter.visual.abs.AbstractController;
+import local.myworktech.formrouter.visual.abs.controllers.AbstractDialogController;
 import local.myworktech.formrouter.visual.forms.SignupDialog;
 
-import java.awt.*;
-
-public class SignupController extends AbstractController {
+public class SignupController extends AbstractDialogController {
     public SignupController(Context context) {
         super(context);
     }
 
     @Override
-    public void instantiateMyForm() throws Exception {
-        throw new Exception("This controller cannot instantiate form");
+    public void createWindow(String owner) {
+        window = new SignupDialog(this, router.get(owner).getWindow());
     }
-
-    public void instantiateMyDialog(Frame owner) {
-        myForm = new SignupDialog(this, owner);
-    }
-
-
 }

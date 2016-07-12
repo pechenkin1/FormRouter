@@ -6,9 +6,9 @@ package local.myworktech.formrouter.visual.forms;
 
 import info.clearthought.layout.TableLayout;
 import info.clearthought.layout.TableLayoutConstraints;
-import local.myworktech.formrouter.visual.abs.AbstractPanel;
-import local.myworktech.formrouter.visual.abs.Controller;
-import local.myworktech.formrouter.visual.abs.Form;
+import local.myworktech.formrouter.visual.abs.controllers.Controller;
+import local.myworktech.formrouter.visual.abs.forms.AbstractPanel;
+import local.myworktech.formrouter.visual.abs.forms.Window;
 
 import javax.swing.*;
 
@@ -16,9 +16,8 @@ import javax.swing.*;
  * @author zxc zxc
  */
 public class EditUserInfoPanel extends AbstractPanel {
-
-
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+    // JFormDesigner - Variables declaration - DO NOT MODIFY
+    // GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - zxc zxc
     private JLabel label1;
     private JTextField usernameTextField;
@@ -36,15 +35,15 @@ public class EditUserInfoPanel extends AbstractPanel {
     private JTextField emailTextField;
     private JLabel label8;
     private JTextField phoneTextField;
-
     public EditUserInfoPanel(Controller controller) {
         super(controller);
     }
 
     @Override
-    public void addForm(Form form) throws Exception {
-        throw new Exception("not supported");
+    public void add(Window window) {
+        System.out.printf("Not supported");
     }
+    // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     @Override
     protected void initComponents() {
@@ -71,7 +70,10 @@ public class EditUserInfoPanel extends AbstractPanel {
 
         // JFormDesigner evaluation mark
         setBorder(new javax.swing.border.CompoundBorder(
-        ));
+                new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
+                        "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
+                        javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
+                        java.awt.Color.red), getBorder()));
         addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent e) {
                 if ("border".equals(e.getPropertyName())) throw new RuntimeException();
@@ -79,8 +81,8 @@ public class EditUserInfoPanel extends AbstractPanel {
         });
 
         setLayout(new TableLayout(new double[][]{
-                {5, 200, 5, 158, 2},
-                {TableLayout.PREFERRED, 5, TableLayout.PREFERRED, 5, TableLayout.PREFERRED, 5, TableLayout.PREFERRED, 5, TableLayout.PREFERRED, 5, TableLayout.PREFERRED, 5, TableLayout.PREFERRED, 5, TableLayout.PREFERRED, 5, TableLayout.PREFERRED, 5, TableLayout.PREFERRED}}));
+                {10, 200, 5, 158, 2},
+                {10, 5, TableLayout.PREFERRED, 5, TableLayout.PREFERRED, 5, TableLayout.PREFERRED, 5, TableLayout.PREFERRED, 5, TableLayout.PREFERRED, 5, TableLayout.PREFERRED, 5, TableLayout.PREFERRED, 5, TableLayout.PREFERRED, 5, TableLayout.PREFERRED, TableLayout.PREFERRED, TableLayout.PREFERRED, TableLayout.PREFERRED}}));
 
         //---- label1 ----
         label1.setText("\u0418\u043c\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f");
@@ -129,5 +131,5 @@ public class EditUserInfoPanel extends AbstractPanel {
         add(phoneTextField, new TableLayoutConstraints(3, 16, 3, 16, TableLayoutConstraints.FULL, TableLayoutConstraints.CENTER));
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
+
 }
