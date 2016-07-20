@@ -1,6 +1,6 @@
 package local.myworktech.formrouter.service;
 
-import local.myworktech.formrouter.visual.abs.controllers.Controller;
+import local.myworktech.formrouter.visual.iface.controllers.Controller;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 

@@ -1,6 +1,6 @@
 package local.myworktech.formrouter.exception;
 
-import local.myworktech.formrouter.visual.abs.forms.Frame;
+import local.myworktech.formrouter.visual.iface.forms.Frame;
 import lombok.AllArgsConstructor;
 
 import java.text.MessageFormat;
