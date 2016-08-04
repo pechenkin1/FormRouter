@@ -12,6 +12,7 @@ public class Router {
 
     private static Router router = new Router();
     private ControllersProvider controllersProvider = new ControllersProvider();
+    private ControllersProvider menuControllersProvider = new ControllersProvider();
 
     public static Router getInstance() {
         return router;

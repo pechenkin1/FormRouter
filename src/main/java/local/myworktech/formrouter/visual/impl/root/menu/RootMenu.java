@@ -4,6 +4,7 @@
 
 package local.myworktech.formrouter.visual.impl.root.menu;
 
+import local.myworktech.formrouter.entity.User;
 import local.myworktech.formrouter.service.Router;
 import local.myworktech.formrouter.visual.iface.controllers.Controller;
 
@@ -17,71 +18,57 @@ import java.awt.event.ActionEvent;
 
 public class RootMenu {
 
+    private RootMenuController rootMenuController;
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - 1 1
-    private JMenuBar rootMenuBar;
-    private JMenu fileMenu;
-    private JMenuItem loginMenuItem;
-    private JMenuItem exitMenuItem;
-    private JMenu objectsMenu;
-    private JMenuItem housesMenuItem;
-    private JMenuItem tenantsMenuItem;
-    private JPanel hSpacer1;
-    private JMenu userName;
-    private JMenuItem menuItem1;
-    private JMenuItem menuItem2;
+    public RootMenu(RootMenuController rootMenuController) {
+        this();
+        this.rootMenuController = rootMenuController;
+    }
 
     public RootMenu() {
         initComponents();
     }
 
     public JMenuBar getRootMenuBar() {
-
         return rootMenuBar;
     }
 
     private void exitMenuItemActionPerformed(ActionEvent e) {
-        // TODO add your code here
-    }
-
-    private void loginMenuItemActionPerformed(ActionEvent e) {
-        // TODO add your code here
-        Router router = Router.getInstance();
-        ((JFrame) router.get("rootFrame").getWindow()).getContentPane().remove(1);
-        ((JFrame) router.get("rootFrame").getWindow()).repaint();
-        Controller child = router.get("loginDialog");
-        child.add("loginDialog", "rootFrame");
-        child.getWindow().view();
-
+        rootMenuController.quitProgram();
     }
 
     private void housesMenuItemActionPerformed(ActionEvent e) {
-        // TODO add your code here
         Router router = Router.getInstance();
         Controller parent = router.get("parentPanel");
-
-
         parent.add("housesPanel");
         ((Component) parent.getWindow()).repaint();
+    }
 
+    private void loginMenuItemActionPerformed(ActionEvent e) {
+        Router router = Router.getInstance();
+        ((JFrame) router.get("rootFrame").getWindow()).repaint();
+        Controller child = router.get("loginDialog");
+        child.add("loginDialog", "rootFrame");
+    }
 
+    private void logoutMenuItemActionPerformed(ActionEvent e) {
+        rootMenuController.logout();
     }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - 1 1
+        // Generated using JFormDesigner Evaluation license - 123 123
         rootMenuBar = new JMenuBar();
         fileMenu = new JMenu();
-        loginMenuItem = new JMenuItem();
         exitMenuItem = new JMenuItem();
+        hSpacer1 = new JPanel(null);
+        userName = new JMenu();
+        loginMenuItem = new JMenuItem();
+        logoutMenuItem = new JMenuItem();
+        editUserInfoMenuItem = new JMenuItem();
         objectsMenu = new JMenu();
         housesMenuItem = new JMenuItem();
         tenantsMenuItem = new JMenuItem();
-        hSpacer1 = new JPanel(null);
-        userName = new JMenu();
-        menuItem1 = new JMenuItem();
-        menuItem2 = new JMenuItem();
 
         //======== rootMenuBar ========
         {
@@ -90,49 +77,75 @@ public class RootMenu {
             {
                 fileMenu.setText("File");
 
-                //---- loginMenuItem ----
-                loginMenuItem.setText("Login");
-                loginMenuItem.addActionListener(e -> loginMenuItemActionPerformed(e));
-                fileMenu.add(loginMenuItem);
-
                 //---- exitMenuItem ----
                 exitMenuItem.setText("Exit");
                 exitMenuItem.addActionListener(e -> exitMenuItemActionPerformed(e));
                 fileMenu.add(exitMenuItem);
             }
             rootMenuBar.add(fileMenu);
-
-            //======== objectsMenu ========
-            {
-                objectsMenu.setText("Objects");
-
-                //---- housesMenuItem ----
-                housesMenuItem.setText("Houses");
-                housesMenuItem.addActionListener(e -> housesMenuItemActionPerformed(e));
-                objectsMenu.add(housesMenuItem);
-
-                //---- tenantsMenuItem ----
-                tenantsMenuItem.setText("Tenants");
-                objectsMenu.add(tenantsMenuItem);
-            }
-            rootMenuBar.add(objectsMenu);
             rootMenuBar.add(hSpacer1);
 
             //======== userName ========
             {
-                userName.setText("_current_user_name");
+                userName.setText("Please, login...");
 
-                //---- menuItem1 ----
-                menuItem1.setText("Edit info");
-                userName.add(menuItem1);
-
-                //---- menuItem2 ----
-                menuItem2.setText("Change");
-                userName.add(menuItem2);
+                //---- loginMenuItem ----
+                loginMenuItem.setText("Login");
+                loginMenuItem.addActionListener(e -> loginMenuItemActionPerformed(e));
+                userName.add(loginMenuItem);
             }
             rootMenuBar.add(userName);
         }
+
+        //---- logoutMenuItem ----
+        logoutMenuItem.setText("Logout");
+        logoutMenuItem.addActionListener(e -> logoutMenuItemActionPerformed(e));
+
+        //---- editUserInfoMenuItem ----
+        editUserInfoMenuItem.setText("Edit user info");
+
+        //======== objectsMenu ========
+        {
+            objectsMenu.setText("Objects");
+
+            //---- housesMenuItem ----
+            housesMenuItem.setText("Houses");
+            objectsMenu.add(housesMenuItem);
+
+            //---- tenantsMenuItem ----
+            tenantsMenuItem.setText("Tenants");
+            objectsMenu.add(tenantsMenuItem);
+        }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
+    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+    // Generated using JFormDesigner Evaluation license - 123 123
+    private JMenuBar rootMenuBar;
+    private JMenu fileMenu;
+    private JMenuItem exitMenuItem;
+    private JPanel hSpacer1;
+    private JMenu userName;
+    private JMenuItem loginMenuItem;
+    private JMenuItem logoutMenuItem;
+    private JMenuItem editUserInfoMenuItem;
+    private JMenu objectsMenu;
+    private JMenuItem housesMenuItem;
+    private JMenuItem tenantsMenuItem;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+
+    public void updateMenuToLoggedIn(User currentUser) {
+        userName.setText(currentUser.getShortUserInfo());
+        userName.remove(loginMenuItem);
+        userName.add(editUserInfoMenuItem);
+        userName.add(logoutMenuItem);
+        rootMenuBar.add(objectsMenu, 1);
+    }
+
+    public void updateMenuToLoggedOut() {
+        userName.setText("Please, login...");
+        userName.remove(editUserInfoMenuItem);
+        userName.remove(logoutMenuItem);
+        userName.add(loginMenuItem);
+        rootMenuBar.remove(objectsMenu);
+    }
 }

@@ -26,31 +26,39 @@ public class LoginController extends AbstractDialogController {
 
     public void login(Credentials credentials) {
         try {
-            checkExistance(credentials);
-            authenticate(credentials);
-            loginInner();
+            login0(credentials);
+            ((Window) window).dispose();
+
         } catch (UserNotExistsException | WrongPasswordException exception) {
             exception.printStackTrace();
             JOptionPane.showMessageDialog((Component) window, exception.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-
     }
 
-    private void loginInner() {
-        context.setCurrentUser(User.getTestUser());
-        ((Frame) router.get("rootFrame").getWindow()).setTitle("ttt");
-
-        ((Window) window).dispose();
+    private void login0(Credentials credentials) throws UserNotExistsException, WrongPasswordException {
+        checkExistence(credentials);
+        authenticate(credentials);
+        context.setLoggedInUser(User.getTestUser());
     }
 
     private void authenticate(Credentials credentials) throws WrongPasswordException {
-        if (!context.validCreds(credentials))
+        if (!validCreds(credentials))
             throw new WrongPasswordException(credentials);
     }
 
-    private void checkExistance(Credentials credentials) throws UserNotExistsException {
+    private void checkExistence(Credentials credentials) throws UserNotExistsException {
         String username = credentials.getUsername();
-        if (!context.hasLogin(username))
+        if (!hasLogin(username))
             throw new UserNotExistsException(username);
     }
+
+    private boolean hasLogin(String login) {
+        return login.equals(testUser.getCredentials().getUsername());
+    }
+
+    private boolean validCreds(Credentials credentials) {
+        return credentials.getPassword().equals("test");
+    }
+
+    private User testUser = User.getTestUser();
 }

@@ -4,6 +4,7 @@ import local.myworktech.formrouter.visual.iface.controllers.Controller;
 import local.myworktech.formrouter.visual.iface.forms.AbstractFrame;
 import local.myworktech.formrouter.visual.iface.forms.Window;
 import local.myworktech.formrouter.visual.impl.root.menu.RootMenu;
+import local.myworktech.formrouter.visual.impl.root.menu.RootMenuController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,9 +25,8 @@ public class RootFrame extends AbstractFrame {
     @Override
     protected void initComponents() {
         setTitle("Frame router");
-        setName("MyRootFrame");
         setLayout(new BorderLayout());
-        initMenu();
+//        loggedOutMenu();
         setSize(700, 400);
         setPreferredSize(getSize());
         setLocation(getScreenCenter());
@@ -43,15 +43,14 @@ public class RootFrame extends AbstractFrame {
 //                              }
 //                          }
 //        );
-        JOptionPane.showMessageDialog(this, "Use \"test:test\" for credentials. ", "Demo mode", JOptionPane.INFORMATION_MESSAGE);
-        controller.add("loginDialog", "rootFrame");
+//        JOptionPane.showMessageDialog(this, "Use \"test:test\" for credentials. ", "Demo mode", JOptionPane.INFORMATION_MESSAGE);
+//        controller.add("loginDialog", "rootFrame");
         controller.add("parentPanel");
 
 
     }
 
-    private void initMenu() {
-        RootMenu rootMenu = new RootMenu();
+    public void addMenu(RootMenu rootMenu) {
         add(rootMenu.getRootMenuBar(), BorderLayout.NORTH);
         pack();
         repaint();

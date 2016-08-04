@@ -11,9 +11,7 @@ import java.awt.event.ActionEvent;
 public class ParentPanel extends AbstractPanel {
 
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - 1 1
-    private JLabel label1;
+
 
     public ParentPanel(Controller controller) {
         super(controller);
@@ -37,8 +35,7 @@ public class ParentPanel extends AbstractPanel {
     @Override
     protected void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - 1 1
-        label1 = new JLabel();
+        // Generated using JFormDesigner Evaluation license - 123 123
 
         //======== this ========
         setMinimumSize(new Dimension(122, 70));
@@ -46,23 +43,15 @@ public class ParentPanel extends AbstractPanel {
 
         // JFormDesigner evaluation mark
         setBorder(new javax.swing.border.CompoundBorder(
-                new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-                        "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-                        javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-                        java.awt.Color.red), getBorder()));
-        addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent e) {
-                if ("border".equals(e.getPropertyName())) throw new RuntimeException();
-            }
-        });
+            new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
+                "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
+                javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
+                java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
 
         setLayout(new BorderLayout());
-
-        //---- label1 ----
-        label1.setText("Choose any meny item");
-        label1.setHorizontalAlignment(SwingConstants.CENTER);
-        add(label1, BorderLayout.NORTH);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
+    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+    // Generated using JFormDesigner Evaluation license - 123 123
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

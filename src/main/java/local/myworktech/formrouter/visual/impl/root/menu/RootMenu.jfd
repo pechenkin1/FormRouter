@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "5.2.3.0.281" Java: "1.8.0_76-release" encoding: "UTF-8"
+JFDML JFormDesigner: "5.2.4.0.321" Java: "1.8.0_76-release" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
@@ -9,27 +9,9 @@ new FormModel {
 				name: "fileMenu"
 				"text": "File"
 				add( new FormComponent( "javax.swing.JMenuItem" ) {
-					name: "loginMenuItem"
-					"text": "Login"
-					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "loginMenuItemActionPerformed", true ) )
-				} )
-				add( new FormComponent( "javax.swing.JMenuItem" ) {
 					name: "exitMenuItem"
 					"text": "Exit"
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "exitMenuItemActionPerformed", true ) )
-				} )
-			} )
-			add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
-				name: "objectsMenu"
-				"text": "Objects"
-				add( new FormComponent( "javax.swing.JMenuItem" ) {
-					name: "housesMenuItem"
-					"text": "Houses"
-					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "housesMenuItemActionPerformed", true ) )
-				} )
-				add( new FormComponent( "javax.swing.JMenuItem" ) {
-					name: "tenantsMenuItem"
-					"text": "Tenants"
 				} )
 			} )
 			add( new FormComponent( "com.jformdesigner.designer.wrapper.HSpacer" ) {
@@ -37,18 +19,42 @@ new FormModel {
 			} )
 			add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
 				name: "userName"
-				"text": "_current_user_name"
+				"text": "Please, login..."
 				add( new FormComponent( "javax.swing.JMenuItem" ) {
-					name: "menuItem1"
-					"text": "Edit info"
-				} )
-				add( new FormComponent( "javax.swing.JMenuItem" ) {
-					name: "menuItem2"
-					"text": "Change"
+					name: "loginMenuItem"
+					"text": "Login"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "loginMenuItemActionPerformed", true ) )
 				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 135, 95 )
+		} )
+		add( new FormComponent( "javax.swing.JMenuItem" ) {
+			name: "logoutMenuItem"
+			"text": "Logout"
+			addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "logoutMenuItemActionPerformed", true ) )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 150, 225 )
+		} )
+		add( new FormComponent( "javax.swing.JMenuItem" ) {
+			name: "editUserInfoMenuItem"
+			"text": "Edit user info"
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 160, 280 )
+		} )
+		add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+			name: "objectsMenu"
+			"text": "Objects"
+			add( new FormComponent( "javax.swing.JMenuItem" ) {
+				name: "housesMenuItem"
+				"text": "Houses"
+			} )
+			add( new FormComponent( "javax.swing.JMenuItem" ) {
+				name: "tenantsMenuItem"
+				"text": "Tenants"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 50, 140 )
 		} )
 	}
 }

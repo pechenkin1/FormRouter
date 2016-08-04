@@ -2,6 +2,8 @@ package local.myworktech.formrouter.entity;
 
 import lombok.Data;
 
+import java.text.MessageFormat;
+
 //@Entity
 @Data
 public class User extends PersistableEntity {
@@ -31,6 +33,10 @@ public class User extends PersistableEntity {
 
     public static User getTestUser() {
         return testUser;
+    }
+
+    public String getShortUserInfo() {
+        return MessageFormat.format("{0} {1} [{2}]", firstName, lastName, email);
     }
 
 }
