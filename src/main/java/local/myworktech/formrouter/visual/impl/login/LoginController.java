@@ -26,19 +26,14 @@ public class LoginController extends AbstractDialogController {
 
     public void login(Credentials credentials) {
         try {
-            login0(credentials);
+            checkExistence(credentials);
+            authenticate(credentials);
+            context.setLoggedInUser(User.getTestUser());
             ((Window) window).dispose();
-
         } catch (UserNotExistsException | WrongPasswordException exception) {
             exception.printStackTrace();
             JOptionPane.showMessageDialog((Component) window, exception.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }
-
-    private void login0(Credentials credentials) throws UserNotExistsException, WrongPasswordException {
-        checkExistence(credentials);
-        authenticate(credentials);
-        context.setLoggedInUser(User.getTestUser());
     }
 
     private void authenticate(Credentials credentials) throws WrongPasswordException {

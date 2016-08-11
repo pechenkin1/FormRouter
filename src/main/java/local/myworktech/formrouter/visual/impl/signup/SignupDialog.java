@@ -11,21 +11,16 @@ import java.awt.event.ActionEvent;
 
 public class SignupDialog extends AbstractDialog {
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - zxc zxc
-    private JPanel dialogPane;
-    private JPanel contentPanel;
-    private JPanel buttonBar;
-    private JButton okButton;
-    private JButton cancelButton;
 
-    public SignupDialog(Controller controller, local.myworktech.formrouter.visual.iface.forms.Window owner) {
+    public SignupDialog(Controller controller, Window owner) {
         super(controller, owner);
         setModal(true);
         setName("Signup dialog");
     }
 
     private void cancelButtonActionPerformed(ActionEvent e) {
+        dispose();
+        ((SignupController) controller).showLoginDialog();
     }
 
     private void okButtonActionPerformed(ActionEvent e) {
@@ -97,8 +92,15 @@ public class SignupDialog extends AbstractDialog {
         setVisible(true);
 
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-//        setVisible(true);
     }
+
+    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+    // Generated using JFormDesigner Evaluation license - zxc zxc
+    private JPanel dialogPane;
+    private JPanel contentPanel;
+    private JPanel buttonBar;
+    private JButton okButton;
+    private JButton cancelButton;
 
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

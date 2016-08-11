@@ -1,0 +1,71 @@
+JFDML JFormDesigner: "5.2.4.0.321" Java: "1.8.0_76-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class info.clearthought.layout.TableLayout ) {
+				"$columnSpecs": "pref, 7.0, 87.0, 7.0, pref, 7.0, 87.0, 7.0, pref, 7.0, 87.0, 7.0, pref"
+				"$rowSpecs": "pref"
+			} ) {
+				name: "fieldsPanel"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "Поиск по фамилии:"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "lastnameTextField"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
+					"gridX": 2
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label2"
+					"text": "Поиск по имени:"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
+					"gridX": 4
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "firstnameTextField"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
+					"gridX": 6
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label3"
+					"text": "Поиск по отчеству:"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
+					"gridX": 8
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "patrnameTextField"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
+					"gridX": 10
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "searchButton"
+					"text": "Поиск"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
+					"gridX": 12
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "North"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "tablePanel"
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane1"
+					add( new FormComponent( "javax.swing.JTable" ) {
+						name: "personsTable"
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 880, 300 )
+		} )
+	}
+}

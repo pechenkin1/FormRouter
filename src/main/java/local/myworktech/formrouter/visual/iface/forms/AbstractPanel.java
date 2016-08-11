@@ -19,3 +19,4 @@ public abstract class AbstractPanel extends JPanel implements Panel {
 
     protected abstract void initComponents();
 }
+//todo implement postconstruct

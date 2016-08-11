@@ -96,11 +96,11 @@ public class LoginDialog extends AbstractDialog {
             buttonBar.setOpaque(false);
 
             // JFormDesigner evaluation mark
-            buttonBar.setBorder(new javax.swing.border.CompoundBorder(
-                new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-                    "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-                    javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-                    java.awt.Color.red), buttonBar.getBorder())); buttonBar.addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
+//            buttonBar.setBorder(new javax.swing.border.CompoundBorder(
+//                new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
+//                    "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
+//                    javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
+//                    java.awt.Color.red), buttonBar.getBorder())); buttonBar.addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
 
             buttonBar.setLayout(new FlowLayout());
 
@@ -140,7 +140,7 @@ public class LoginDialog extends AbstractDialog {
                 loginPanel.add(label1, new TableLayoutConstraints(1, 1, 1, 1, TableLayoutConstraints.FULL, TableLayoutConstraints.FULL));
 
                 //---- loginField ----
-                loginField.setText("test");
+                loginField.setText("joe");
                 loginField.addKeyListener(new KeyAdapter() {
                     @Override
                     public void keyPressed(KeyEvent e) {
@@ -154,7 +154,7 @@ public class LoginDialog extends AbstractDialog {
                 loginPanel.add(label2, new TableLayoutConstraints(1, 2, 1, 2, TableLayoutConstraints.FULL, TableLayoutConstraints.FULL));
 
                 //---- passwordField ----
-                passwordField.setText("test");
+                passwordField.setText("god");
                 passwordField.addKeyListener(new KeyAdapter() {
                     @Override
                     public void keyPressed(KeyEvent e) {
@@ -166,7 +166,7 @@ public class LoginDialog extends AbstractDialog {
             contentPanel.add(loginPanel, BorderLayout.CENTER);
         }
         contentPane.add(contentPanel, BorderLayout.CENTER);
-        setSize(375, 165);
+        setSize(375, 150);
         setLocationRelativeTo(null);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
         setVisible(true);

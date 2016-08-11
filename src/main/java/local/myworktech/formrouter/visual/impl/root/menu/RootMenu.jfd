@@ -39,6 +39,7 @@ new FormModel {
 		add( new FormComponent( "javax.swing.JMenuItem" ) {
 			name: "editUserInfoMenuItem"
 			"text": "Edit user info"
+			addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "editUserInfoMenuItemActionPerformed", true ) )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 160, 280 )
 		} )
@@ -48,10 +49,12 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JMenuItem" ) {
 				name: "housesMenuItem"
 				"text": "Houses"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "housesMenuItemActionPerformed", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JMenuItem" ) {
 				name: "tenantsMenuItem"
 				"text": "Tenants"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "tenantsMenuItemActionPerformed", true ) )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 50, 140 )

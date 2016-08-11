@@ -6,44 +6,31 @@ package local.myworktech.formrouter.visual.impl.userInfoPanel;
 
 import info.clearthought.layout.TableLayout;
 import info.clearthought.layout.TableLayoutConstraints;
+import local.myworktech.formrouter.entity.Gender;
+import local.myworktech.formrouter.entity.User;
 import local.myworktech.formrouter.visual.iface.controllers.Controller;
 import local.myworktech.formrouter.visual.iface.forms.AbstractPanel;
 import local.myworktech.formrouter.visual.iface.forms.Window;
 
 import javax.swing.*;
 
-/**
- * @author zxc zxc
- */
 public class EditUserInfoPanel extends AbstractPanel {
-    // JFormDesigner - Variables declaration - DO NOT MODIFY
-    // GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - zxc zxc
-    private JLabel label1;
-    private JTextField usernameTextField;
-    private JLabel label2;
-    private JPasswordField passwordField;
-    private JLabel label3;
-    private JTextField lastnameTextField;
-    private JLabel label4;
-    private JTextField firstnameTextField;
-    private JLabel label5;
-    private JTextField middlenameTextField;
-    private JLabel label6;
-    private JComboBox<String> genderComboBox;
-    private JLabel label7;
-    private JTextField emailTextField;
-    private JLabel label8;
-    private JTextField phoneTextField;
-    public EditUserInfoPanel(Controller controller) {
-        super(controller);
-    }
 
     @Override
     public void add(Window window) {
-        System.out.printf("Not supported");
+        System.out.println("Not supported");
     }
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
+
+    public void fillTheForm() {
+        User user = ((UserInfoPanelController)controller).getUserToEdit();
+        firstnameTextField.setText(user.getFirstName());
+        lastnameTextField.setText(user.getLastName());
+        middlenameTextField.setText(user.getMiddleName());
+        emailTextField.setText(user.getEmail());
+        phoneTextField.setText(user.getPhone());
+        usernameTextField.setText(user.getCredentials().getUsername());
+        passwordField.setText(user.getCredentials().getPassword());
+    }
 
     @Override
     protected void initComponents() {
@@ -69,16 +56,16 @@ public class EditUserInfoPanel extends AbstractPanel {
         //======== this ========
 
         // JFormDesigner evaluation mark
-        setBorder(new javax.swing.border.CompoundBorder(
-                new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-                        "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-                        javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-                        java.awt.Color.red), getBorder()));
-        addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent e) {
-                if ("border".equals(e.getPropertyName())) throw new RuntimeException();
-            }
-        });
+//        setBorder(new javax.swing.border.CompoundBorder(
+//                new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
+//                        "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
+//                        javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
+//                        java.awt.Color.red), getBorder()));
+//        addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+//            public void propertyChange(java.beans.PropertyChangeEvent e) {
+//                if ("border".equals(e.getPropertyName())) throw new RuntimeException();
+//            }
+//        });
 
         setLayout(new TableLayout(new double[][]{
                 {10, 200, 5, 158, 2},
@@ -113,11 +100,6 @@ public class EditUserInfoPanel extends AbstractPanel {
         label6.setText("\u041f\u043e\u043b");
         add(label6, new TableLayoutConstraints(1, 12, 1, 12, TableLayoutConstraints.FULL, TableLayoutConstraints.CENTER));
 
-        //---- genderComboBox ----
-        genderComboBox.setModel(new DefaultComboBoxModel<>(new String[]{
-                "\u041c\u0443\u0436\u0441\u043a\u043e\u0439",
-                "\u0416\u0435\u043d\u0441\u043a\u0438\u0439"
-        }));
         add(genderComboBox, new TableLayoutConstraints(3, 12, 3, 12, TableLayoutConstraints.FULL, TableLayoutConstraints.CENTER));
 
         //---- label7 ----
@@ -130,6 +112,35 @@ public class EditUserInfoPanel extends AbstractPanel {
         add(label8, new TableLayoutConstraints(1, 16, 1, 16, TableLayoutConstraints.FULL, TableLayoutConstraints.CENTER));
         add(phoneTextField, new TableLayoutConstraints(3, 16, 3, 16, TableLayoutConstraints.FULL, TableLayoutConstraints.CENTER));
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
+
+        ComboBoxModel<Gender> comboBoxModel = new DefaultComboBoxModel<>(Gender.values());
+        genderComboBox.setModel(comboBoxModel);
+        fillTheForm();
     }
+
+    // JFormDesigner - Variables declaration - DO NOT MODIFY
+    // GEN-BEGIN:variables
+    // Generated using JFormDesigner Evaluation license - zxc zxc
+    private JLabel label1;
+    private JTextField usernameTextField;
+    private JLabel label2;
+    private JPasswordField passwordField;
+    private JLabel label3;
+    private JTextField lastnameTextField;
+    private JLabel label4;
+    private JTextField firstnameTextField;
+    private JLabel label5;
+    private JTextField middlenameTextField;
+    private JLabel label6;
+    private JComboBox<Gender> genderComboBox;
+    private JLabel label7;
+    private JTextField emailTextField;
+    private JLabel label8;
+    private JTextField phoneTextField;
+    public EditUserInfoPanel(Controller controller) {
+        super(controller);
+    }
+    // JFormDesigner - End of variables declaration  //GEN-END:variables
+
 
 }

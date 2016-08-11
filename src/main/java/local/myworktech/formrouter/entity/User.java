@@ -21,13 +21,13 @@ public class User extends PersistableEntity {
 
     private static User getTestUserInner() {
         User user = new User();
-        user.setFirstName("Joey");
-        user.setLastName("Tribbiani");
-        user.setMiddleName("Francis");
-        user.setGender(Gender.Мужской);
-        user.setEmail("joey@friends.com");
+        user.setFirstName("Joe");
+        user.setLastName("Gunner");
+        user.setMiddleName("Johnson");
+        user.setGender(Gender.Male);
+        user.setEmail("joe@friends.com");
         user.setPhone("+7 999 123-44-55");
-        user.setCredentials(new Credentials("test", "test"));
+        user.setCredentials(new Credentials("joe", "123"));
         return user;
     }
 

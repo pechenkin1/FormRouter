@@ -9,6 +9,8 @@ import local.myworktech.formrouter.visual.impl.root.ParentController;
 import local.myworktech.formrouter.visual.impl.root.RootController;
 import local.myworktech.formrouter.visual.impl.root.menu.RootMenuController;
 import local.myworktech.formrouter.visual.impl.signup.SignupController;
+import local.myworktech.formrouter.visual.impl.tenants.TenantsController;
+import local.myworktech.formrouter.visual.impl.userInfoDialog.UserInfoController;
 import local.myworktech.formrouter.visual.impl.userInfoPanel.UserInfoPanelController;
 
 public class Context {
@@ -27,6 +29,11 @@ public class Context {
         currentUser.setUser(null);
         RootMenuController rootMenuController = RootMenuController.getInstance();
         rootMenuController.updateMenuToLoggedOut();
+        Controller parentController = router.get("parentPanel");
+        ((ParentController) parentController).clear();
+
+        Controller rootController = router.get("rootFrame");
+        rootController.add("loginDialog", "rootFrame");
     }
 
     public User getCurrentUser() {
@@ -53,6 +60,8 @@ public class Context {
         router.registerController("signupDialog", new SignupController(this));
         router.registerController("loginDialog", new LoginController(this));
         router.registerController("housesPanel", new HousesController(this));
+        router.registerController("userInfoDialog", new UserInfoController(this));
+        router.registerController("tenantsPanel", new TenantsController(this));
 
         RootMenuController.init(this);
     }

@@ -12,20 +12,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-/**
- * @author zxc zxc
- */
-
 public class RootMenu {
 
     private RootMenuController rootMenuController;
 
     public RootMenu(RootMenuController rootMenuController) {
-        this();
         this.rootMenuController = rootMenuController;
-    }
-
-    public RootMenu() {
         initComponents();
     }
 
@@ -38,21 +30,23 @@ public class RootMenu {
     }
 
     private void housesMenuItemActionPerformed(ActionEvent e) {
-        Router router = Router.getInstance();
-        Controller parent = router.get("parentPanel");
-        parent.add("housesPanel");
-        ((Component) parent.getWindow()).repaint();
+        rootMenuController.showHouses();
     }
 
     private void loginMenuItemActionPerformed(ActionEvent e) {
-        Router router = Router.getInstance();
-        ((JFrame) router.get("rootFrame").getWindow()).repaint();
-        Controller child = router.get("loginDialog");
-        child.add("loginDialog", "rootFrame");
+       rootMenuController.showLoginDialog();
     }
 
     private void logoutMenuItemActionPerformed(ActionEvent e) {
         rootMenuController.logout();
+    }
+
+    private void editUserInfoMenuItemActionPerformed(ActionEvent e) {
+        rootMenuController.editUserInfo();
+    }
+
+    private void tenantsMenuItemActionPerformed(ActionEvent e) {
+       rootMenuController.showTenants();
     }
 
     private void initComponents() {
@@ -103,6 +97,7 @@ public class RootMenu {
 
         //---- editUserInfoMenuItem ----
         editUserInfoMenuItem.setText("Edit user info");
+        editUserInfoMenuItem.addActionListener(e -> editUserInfoMenuItemActionPerformed(e));
 
         //======== objectsMenu ========
         {
@@ -110,10 +105,12 @@ public class RootMenu {
 
             //---- housesMenuItem ----
             housesMenuItem.setText("Houses");
+            housesMenuItem.addActionListener(e -> housesMenuItemActionPerformed(e));
             objectsMenu.add(housesMenuItem);
 
             //---- tenantsMenuItem ----
             tenantsMenuItem.setText("Tenants");
+            tenantsMenuItem.addActionListener(e -> tenantsMenuItemActionPerformed(e));
             objectsMenu.add(tenantsMenuItem);
         }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents

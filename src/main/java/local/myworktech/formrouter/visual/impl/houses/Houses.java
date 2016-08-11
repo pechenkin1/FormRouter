@@ -33,6 +33,7 @@ public class Houses extends AbstractPanel {
 
     public Houses(Controller controller) {
         super(controller);
+        setName("Houses Panel");
 
     }
 
