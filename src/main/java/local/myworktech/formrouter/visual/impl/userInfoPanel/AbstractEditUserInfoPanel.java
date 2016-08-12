@@ -11,18 +11,21 @@ import local.myworktech.formrouter.entity.User;
 import local.myworktech.formrouter.visual.iface.controllers.Controller;
 import local.myworktech.formrouter.visual.iface.forms.AbstractPanel;
 import local.myworktech.formrouter.visual.iface.forms.Window;
+import local.myworktech.formrouter.visual.impl.userInfoPanel.create.CreateUserPanelController;
 
 import javax.swing.*;
 
-public class EditUserInfoPanel extends AbstractPanel {
+public abstract class AbstractEditUserInfoPanel extends AbstractPanel {
+
+    public abstract void postConstruct();
 
     @Override
     public void add(Window window) {
         System.out.println("Not supported");
     }
 
-    public void fillTheForm() {
-        User user = ((UserInfoPanelController)controller).getUserToEdit();
+    public void fillTheFormWithCurrentUser(User user) {
+
         firstnameTextField.setText(user.getFirstName());
         lastnameTextField.setText(user.getLastName());
         middlenameTextField.setText(user.getMiddleName());
@@ -31,6 +34,27 @@ public class EditUserInfoPanel extends AbstractPanel {
         usernameTextField.setText(user.getCredentials().getUsername());
         passwordField.setText(user.getCredentials().getPassword());
     }
+
+    public User createUser() {
+        return update(new User());
+    }
+
+    public User updateUser(User user) {
+        return update(user);
+    }
+
+    private User update(User user) {
+        user.setFirstName(firstnameTextField.getText());
+        user.setLastName(lastnameTextField.getText());
+        user.setMiddleName(middlenameTextField.getText());
+        user.setEmail(emailTextField.getText());
+        user.setPhone(phoneTextField.getText());
+        user.getCredentials().setUsername(usernameTextField.getText());
+        user.getCredentials().setPassword(passwordField.getText());
+        return user;
+    }
+
+
 
     @Override
     protected void initComponents() {
@@ -115,7 +139,8 @@ public class EditUserInfoPanel extends AbstractPanel {
 
         ComboBoxModel<Gender> comboBoxModel = new DefaultComboBoxModel<>(Gender.values());
         genderComboBox.setModel(comboBoxModel);
-        fillTheForm();
+
+        postConstruct();
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY
@@ -137,7 +162,7 @@ public class EditUserInfoPanel extends AbstractPanel {
     private JTextField emailTextField;
     private JLabel label8;
     private JTextField phoneTextField;
-    public EditUserInfoPanel(Controller controller) {
+    public AbstractEditUserInfoPanel(Controller controller) {
         super(controller);
     }
     // JFormDesigner - End of variables declaration  //GEN-END:variables

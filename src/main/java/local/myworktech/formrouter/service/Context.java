@@ -11,7 +11,8 @@ import local.myworktech.formrouter.visual.impl.root.menu.RootMenuController;
 import local.myworktech.formrouter.visual.impl.signup.SignupController;
 import local.myworktech.formrouter.visual.impl.tenants.TenantsController;
 import local.myworktech.formrouter.visual.impl.userInfoDialog.UserInfoController;
-import local.myworktech.formrouter.visual.impl.userInfoPanel.UserInfoPanelController;
+import local.myworktech.formrouter.visual.impl.userInfoPanel.create.CreateUserPanelController;
+import local.myworktech.formrouter.visual.impl.userInfoPanel.update.UpdateUserPanelController;
 
 public class Context {
 
@@ -54,7 +55,9 @@ public class Context {
     }
 
     private void registerControllers() {
-        router.registerController("userInfoPanel", new UserInfoPanelController(this));
+        router.registerController("createUserPanel", new CreateUserPanelController(this));
+        router.registerController("updateUserPanel", new UpdateUserPanelController(this));
+
         router.registerController("rootFrame", new RootController(this));
         router.registerController("parentPanel", new ParentController(this));
         router.registerController("signupDialog", new SignupController(this));

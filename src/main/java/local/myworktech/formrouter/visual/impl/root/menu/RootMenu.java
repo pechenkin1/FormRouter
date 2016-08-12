@@ -43,6 +43,7 @@ public class RootMenu {
 
     private void editUserInfoMenuItemActionPerformed(ActionEvent e) {
         rootMenuController.editUserInfo();
+        userName.setText(rootMenuController.getCurrentUser().getShortUserInfo());
     }
 
     private void tenantsMenuItemActionPerformed(ActionEvent e) {

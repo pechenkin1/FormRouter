@@ -52,7 +52,7 @@ public class LoginController extends AbstractDialogController {
     }
 
     private boolean validCreds(Credentials credentials) {
-        return credentials.getPassword().equals("test");
+        return credentials.getPassword().equals(testUser.getCredentials().getPassword());
     }
 
     private User testUser = User.getTestUser();

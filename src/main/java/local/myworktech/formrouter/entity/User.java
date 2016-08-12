@@ -27,7 +27,7 @@ public class User extends PersistableEntity {
         user.setGender(Gender.Male);
         user.setEmail("joe@friends.com");
         user.setPhone("+7 999 123-44-55");
-        user.setCredentials(new Credentials("joe", "123"));
+        user.setCredentials(new Credentials("joe", "god"));
         return user;
     }
 

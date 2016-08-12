@@ -15,7 +15,8 @@ public class SignupDialog extends AbstractDialog {
     public SignupDialog(Controller controller, Window owner) {
         super(controller, owner);
         setModal(true);
-        setName("Signup dialog");
+        setName("signupDialog");
+        setTitle("Signup dialog");
     }
 
     private void cancelButtonActionPerformed(ActionEvent e) {
@@ -86,7 +87,7 @@ public class SignupDialog extends AbstractDialog {
             dialogPane.add(buttonBar, BorderLayout.SOUTH);
         }
         contentPane.add(dialogPane, BorderLayout.CENTER);
-        controller.add("userInfoPanel");
+        controller.add("createUserPanel");
         pack();
         setLocationRelativeTo(getOwner());
         setVisible(true);

@@ -12,6 +12,4 @@ public interface Controller {
     void add(String childWindow, String ownerWindow);
 
     Window getWindow();
-
-
 }

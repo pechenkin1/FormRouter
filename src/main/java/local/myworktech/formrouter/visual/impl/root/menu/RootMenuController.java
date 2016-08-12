@@ -1,5 +1,6 @@
 package local.myworktech.formrouter.visual.impl.root.menu;
 
+import local.myworktech.formrouter.entity.User;
 import local.myworktech.formrouter.service.Context;
 import local.myworktech.formrouter.service.Router;
 import local.myworktech.formrouter.visual.iface.controllers.Controller;
@@ -38,6 +39,10 @@ public class RootMenuController {
     public void quitProgram() {
         context.setLoggedOutUser();
         context.quitProgram();
+    }
+
+    public User getCurrentUser() {
+        return context.getCurrentUser();
     }
 
     public void updateMenuToLoggedIn() {

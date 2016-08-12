@@ -1,8 +1,10 @@
 package local.myworktech.formrouter.visual.impl.userInfoDialog;
 
+import local.myworktech.formrouter.service.Router;
 import local.myworktech.formrouter.visual.iface.controllers.Controller;
 import local.myworktech.formrouter.visual.iface.forms.AbstractDialog;
 import local.myworktech.formrouter.visual.iface.forms.Window;
+import local.myworktech.formrouter.visual.impl.userInfoPanel.update.UpdateUserPanelController;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -15,7 +17,8 @@ public class UserInfoDialog extends AbstractDialog{
         public UserInfoDialog(Controller controller, Window owner) {
             super(controller, owner);
             setModal(true);
-            setName("Edit info dialog");
+            setName("editUserInfoDialog");
+            setTitle("Edit user info");
         }
 
         private void cancelButtonActionPerformed(ActionEvent e) {
@@ -24,6 +27,10 @@ public class UserInfoDialog extends AbstractDialog{
         }
 
         private void okButtonActionPerformed(ActionEvent e) {
+            Router router = Router.getInstance();
+            Controller controller = router.get("updateUserPanel");
+            ((UpdateUserPanelController) controller).updateUser();
+            dispose();
         }
 
         @Override
@@ -86,7 +93,7 @@ public class UserInfoDialog extends AbstractDialog{
                 dialogPane.add(buttonBar, BorderLayout.SOUTH);
             }
             contentPane.add(dialogPane, BorderLayout.CENTER);
-            controller.add("userInfoPanel");
+            controller.add("updateUserPanel");
             pack();
             setLocationRelativeTo(getOwner());
             setVisible(true);

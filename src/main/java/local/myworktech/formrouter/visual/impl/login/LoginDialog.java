@@ -25,7 +25,8 @@ public class LoginDialog extends AbstractDialog {
 
     public LoginDialog(Controller controller, Window owner) {
         super(controller, owner);
-        setName("Login dialog");
+        setName("loginDialog");
+        setTitle("Login dialog");
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     }
 
