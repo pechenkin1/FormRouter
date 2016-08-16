@@ -4,6 +4,8 @@ import local.myworktech.formrouter.service.Context;
 import local.myworktech.formrouter.service.Router;
 import local.myworktech.formrouter.visual.iface.forms.Window;
 
+import java.text.MessageFormat;
+
 public abstract class AbstractController implements Controller {
     protected Context context;
     protected Router router = Router.getInstance();
@@ -22,12 +24,13 @@ public abstract class AbstractController implements Controller {
     public abstract void createWindow();
 
     @Override
-    public void createWindow(String owner) {
+    public  void createWindow(String owner) {
         System.out.println("Not supported.");
     }
 
     @Override
     public void add(String childWindow) {
+        System.out.println(MessageFormat.format("INFO: Creating window {0}", childWindow));
         Controller childController = router.get(childWindow);
         childController.createWindow();
         window.add(childController.getWindow());
@@ -36,9 +39,6 @@ public abstract class AbstractController implements Controller {
 
     @Override
     public void add(String childWindow, String ownerWindow) {
-        Controller childController = router.get(childWindow);
-        childController.createWindow(ownerWindow);
-//        window.add(childController.getWindow());
-        childController.getWindow().view();
+        System.out.println("Not qqqsupported.");
     }
 }

@@ -12,6 +12,5 @@ public class CreateUserPanel extends AbstractEditUserInfoPanel {
     @Override
     public void postConstruct() {
         setName("createUserPanel");
-
     }
 }

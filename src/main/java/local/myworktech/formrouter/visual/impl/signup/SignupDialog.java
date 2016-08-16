@@ -11,7 +11,6 @@ import java.awt.event.ActionEvent;
 
 public class SignupDialog extends AbstractDialog {
 
-
     public SignupDialog(Controller controller, Window owner) {
         super(controller, owner);
         setModal(true);
@@ -25,13 +24,13 @@ public class SignupDialog extends AbstractDialog {
     }
 
     private void okButtonActionPerformed(ActionEvent e) {
+        //todo Implement new user persistation
     }
 
     @Override
     public void add(Window form) {
         contentPanel.add((Component) form, BorderLayout.CENTER);
     }
-
 
     @Override
     protected void initComponents() {
@@ -87,21 +86,22 @@ public class SignupDialog extends AbstractDialog {
             dialogPane.add(buttonBar, BorderLayout.SOUTH);
         }
         contentPane.add(dialogPane, BorderLayout.CENTER);
+        // JFormDesigner - End of component initialization  //GEN-END:initComponents
+    }
+
+    @Override
+    protected void postConstruct() {
         controller.add("createUserPanel");
         pack();
         setLocationRelativeTo(getOwner());
         setVisible(true);
-
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - zxc zxc
     private JPanel dialogPane;
     private JPanel contentPanel;
     private JPanel buttonBar;
     private JButton okButton;
     private JButton cancelButton;
-
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

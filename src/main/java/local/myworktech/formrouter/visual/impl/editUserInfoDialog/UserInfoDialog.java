@@ -1,4 +1,4 @@
-package local.myworktech.formrouter.visual.impl.userInfoDialog;
+package local.myworktech.formrouter.visual.impl.editUserInfoDialog;
 
 import local.myworktech.formrouter.service.Router;
 import local.myworktech.formrouter.visual.iface.controllers.Controller;
@@ -23,7 +23,6 @@ public class UserInfoDialog extends AbstractDialog{
 
         private void cancelButtonActionPerformed(ActionEvent e) {
             dispose();
-//            ((UserInfoController) controller).showLoginDialog();
         }
 
         private void okButtonActionPerformed(ActionEvent e) {
@@ -42,7 +41,6 @@ public class UserInfoDialog extends AbstractDialog{
         @Override
         protected void initComponents() {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-            // Generated using JFormDesigner Evaluation license - zxc zxc
             dialogPane = new JPanel();
             contentPanel = new JPanel();
             buttonBar = new JPanel();
@@ -93,15 +91,20 @@ public class UserInfoDialog extends AbstractDialog{
                 dialogPane.add(buttonBar, BorderLayout.SOUTH);
             }
             contentPane.add(dialogPane, BorderLayout.CENTER);
-            controller.add("updateUserPanel");
-            pack();
-            setLocationRelativeTo(getOwner());
-            setVisible(true);
 
             // JFormDesigner - End of component initialization  //GEN-END:initComponents
         }
 
-        // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+    @Override
+    protected void postConstruct() {
+        controller.add("updateUserPanel");
+        pack();
+        setLocationRelativeTo(getOwner());
+        setVisible(true);
+
+    }
+
+    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
         // Generated using JFormDesigner Evaluation license - zxc zxc
         private JPanel dialogPane;
         private JPanel contentPanel;

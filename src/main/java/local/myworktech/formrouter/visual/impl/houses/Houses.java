@@ -111,5 +111,10 @@ public class Houses extends AbstractPanel {
         add(panel1, BorderLayout.CENTER);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
+
+    @Override
+    protected void postConstruct() {
+        // do nothing
+    }
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

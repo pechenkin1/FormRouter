@@ -13,10 +13,13 @@ public abstract class AbstractDialog extends JDialog implements Dialog {
     @Override
     public void view() {
         initComponents();
+        postConstruct();
     }
 
     @Override
     public abstract void add(Window window);
 
     protected abstract void initComponents();
+
+    protected abstract void postConstruct();
 }

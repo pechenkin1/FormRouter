@@ -10,7 +10,7 @@ import local.myworktech.formrouter.visual.impl.root.RootController;
 import local.myworktech.formrouter.visual.impl.root.menu.RootMenuController;
 import local.myworktech.formrouter.visual.impl.signup.SignupController;
 import local.myworktech.formrouter.visual.impl.tenants.TenantsController;
-import local.myworktech.formrouter.visual.impl.userInfoDialog.UserInfoController;
+import local.myworktech.formrouter.visual.impl.editUserInfoDialog.UserInfoController;
 import local.myworktech.formrouter.visual.impl.userInfoPanel.create.CreateUserPanelController;
 import local.myworktech.formrouter.visual.impl.userInfoPanel.update.UpdateUserPanelController;
 
@@ -33,8 +33,8 @@ public class Context {
         Controller parentController = router.get("parentPanel");
         ((ParentController) parentController).clear();
 
-        Controller rootController = router.get("rootFrame");
-        rootController.add("loginDialog", "rootFrame");
+        Controller loginDialog = router.get("loginDialog");
+        loginDialog.add("loginDialog", "rootFrame");
     }
 
     public User getCurrentUser() {
@@ -51,19 +51,21 @@ public class Context {
         currentUser = new CurrentUser();
         Controller rootController = router.get("rootFrame");
         rootController.createWindow();
-        rootController.add("loginDialog", "rootFrame");
+
+        Controller loginDialog = router.get("loginDialog");
+        loginDialog.add("loginDialog", "rootFrame");
     }
 
     private void registerControllers() {
-        router.registerController("createUserPanel", new CreateUserPanelController(this));
-        router.registerController("updateUserPanel", new UpdateUserPanelController(this));
-
         router.registerController("rootFrame", new RootController(this));
-        router.registerController("parentPanel", new ParentController(this));
         router.registerController("signupDialog", new SignupController(this));
         router.registerController("loginDialog", new LoginController(this));
-        router.registerController("housesPanel", new HousesController(this));
         router.registerController("userInfoDialog", new UserInfoController(this));
+
+        router.registerController("parentPanel", new ParentController(this));
+        router.registerController("createUserPanel", new CreateUserPanelController(this));
+        router.registerController("updateUserPanel", new UpdateUserPanelController(this));
+        router.registerController("housesPanel", new HousesController(this));
         router.registerController("tenantsPanel", new TenantsController(this));
 
         RootMenuController.init(this);
@@ -72,8 +74,6 @@ public class Context {
     public void quitProgram() {
         System.exit(0);
     }
-
-
-
-
 }
+
+//todo createUserPanel on a signupDialog; updateUserPanel on a userInfoDialog; both of these panels extend the same parent

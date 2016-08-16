@@ -45,18 +45,19 @@ public class TenantsPanel extends AbstractPanel {
 
         // JFormDesigner evaluation mark
         setBorder(new javax.swing.border.CompoundBorder(
-            new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-                "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-                javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-                java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
+                new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
+                        "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
+                        javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
+                        java.awt.Color.red), getBorder()));
+
 
         setLayout(new BorderLayout());
 
         //======== fieldsPanel ========
         {
-            fieldsPanel.setLayout(new TableLayout(new double[][] {
-                {TableLayout.PREFERRED, 7, 87, 7, TableLayout.PREFERRED, 7, 87, 7, TableLayout.PREFERRED, 7, 87, 7, TableLayout.PREFERRED},
-                {TableLayout.PREFERRED}}));
+            fieldsPanel.setLayout(new TableLayout(new double[][]{
+                    {TableLayout.PREFERRED, 7, 87, 7, TableLayout.PREFERRED, 7, 87, 7, TableLayout.PREFERRED, 7, 87, 7, TableLayout.PREFERRED},
+                    {TableLayout.PREFERRED}}));
 
             //---- label1 ----
             label1.setText("\u041f\u043e\u0438\u0441\u043a \u043f\u043e \u0444\u0430\u043c\u0438\u043b\u0438\u0438:");
@@ -91,6 +92,11 @@ public class TenantsPanel extends AbstractPanel {
         }
         add(tablePanel, BorderLayout.CENTER);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
+    }
+
+    @Override
+    protected void postConstruct() {
+        // do nothing;
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

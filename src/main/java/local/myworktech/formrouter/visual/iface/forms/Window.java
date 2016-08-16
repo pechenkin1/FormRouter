@@ -4,4 +4,5 @@ public interface Window {
     void view();
 
     void add(Window window);
+
 }

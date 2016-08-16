@@ -13,7 +13,7 @@ public class HousesController extends AbstractController {
     @Override
     public void createWindow() {
         window = new Houses(this);
-        window.view();
+//        window.view();
 
     }
 

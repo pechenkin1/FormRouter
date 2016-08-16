@@ -19,8 +19,11 @@ public class SignupController extends AbstractDialogController {
 
     public void showLoginDialog() {
         Router router = Router.getInstance();
-        ((JFrame) router.get("rootFrame").getWindow()).repaint();
-        Controller child = router.get("loginDialog");
-        child.add("loginDialog", "rootFrame");
+//        ((JFrame) router.get("rootFrame").getWindow()).repaint(); //todo Delete or retain? check all occurences. Collapse repaint() into Router.class
+        Controller loginDialog = router.get("loginDialog");
+        loginDialog.add("loginDialog", "rootFrame");
     }
 }
+
+
+//todo DOC: All dialogs created on a rootFrame, not on a parentPanel

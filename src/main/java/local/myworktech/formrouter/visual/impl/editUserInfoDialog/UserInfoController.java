@@ -1,6 +1,5 @@
-package local.myworktech.formrouter.visual.impl.userInfoDialog;
+package local.myworktech.formrouter.visual.impl.editUserInfoDialog;
 
-import local.myworktech.formrouter.entity.User;
 import local.myworktech.formrouter.service.Context;
 import local.myworktech.formrouter.visual.iface.controllers.AbstractDialogController;
 

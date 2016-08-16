@@ -48,6 +48,11 @@ public class ParentPanel extends AbstractPanel {
         setLayout(new BorderLayout());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
+
+    @Override
+    protected void postConstruct() {
+
+    }
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - 123 123
     // JFormDesigner - End of variables declaration  //GEN-END:variables

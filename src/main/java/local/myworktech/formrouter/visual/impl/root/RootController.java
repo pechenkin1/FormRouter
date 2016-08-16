@@ -18,4 +18,8 @@ public class RootController extends AbstractController {
         ((RootFrame) window).addMenu(rootMenuController.getRootMenu());
         ((RootFrame) window).pack();
     }
+
+    public void addParentPanel() {
+        add("parentPanel");
+    }
 }

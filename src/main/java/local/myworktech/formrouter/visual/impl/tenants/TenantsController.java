@@ -10,6 +10,7 @@ public class TenantsController extends AbstractController {
 
     @Override
     public void createWindow() {
+//        if (window == null)
         window = new TenantsPanel(this);
 //        myForm.view();
     }

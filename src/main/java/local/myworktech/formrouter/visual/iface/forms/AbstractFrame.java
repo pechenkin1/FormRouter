@@ -12,10 +12,13 @@ public abstract class AbstractFrame extends JFrame implements Frame {
     @Override
     public void view() {
         initComponents();
+        postConstruct();
     }
 
     @Override
     public abstract void add(Window window);
 
     protected abstract void initComponents();
+
+    protected abstract void postConstruct();
 }

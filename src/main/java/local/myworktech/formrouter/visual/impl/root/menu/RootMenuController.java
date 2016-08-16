@@ -20,7 +20,8 @@ public class RootMenuController {
     }
 
     public static void init(Context context) {
-        rootMenuController = new RootMenuController(context);
+        if (rootMenuController == null)
+            rootMenuController = new RootMenuController(context);
     }
 
     private RootMenuController(Context context) {
@@ -37,7 +38,6 @@ public class RootMenuController {
     }
 
     public void quitProgram() {
-        context.setLoggedOutUser();
         context.quitProgram();
     }
 
@@ -67,15 +67,15 @@ public class RootMenuController {
     public void showLoginDialog() {
         Router router = Router.getInstance();
         ((JFrame) router.get("rootFrame").getWindow()).repaint();
-        Controller child = router.get("rootFrame");
-        child.add("loginDialog", "rootFrame");
+        Controller loginDialog = router.get("loginDialog");
+        loginDialog.add("loginDialog", "rootFrame");
     }
 
     public void editUserInfo() {
         Router router = Router.getInstance();
         ((JFrame) router.get("rootFrame").getWindow()).repaint();
-        Controller child = router.get("userInfoDialog");
-        child.add("userInfoDialog", "rootFrame");
+        Controller userInfoDialog = router.get("userInfoDialog");
+        userInfoDialog.add("userInfoDialog", "rootFrame");
     }
 
     public void showTenants() {
@@ -85,3 +85,4 @@ public class RootMenuController {
         ((Component) parent.getWindow()).repaint();
     }
 }
+//todo search for "getWindow()).repaint();" and refactor it

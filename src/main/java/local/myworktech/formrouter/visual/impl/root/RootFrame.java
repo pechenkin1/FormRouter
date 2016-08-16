@@ -26,28 +26,16 @@ public class RootFrame extends AbstractFrame {
     protected void initComponents() {
         setTitle("Frame router");
         setLayout(new BorderLayout());
-//        loggedOutMenu();
         setSize(700, 400);
         setPreferredSize(getSize());
         setLocation(getScreenCenter());
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
-//        addWindowListener(new WindowAdapter() {
-//                              @Override
-//                              public void windowOpened(WindowEvent e) {
-//                                  try {
-//
-//                                  } catch (Exception e1) {
-//                                      e1.printStackTrace();
-//                                  }
-//                              }
-//                          }
-//        );
-//        JOptionPane.showMessageDialog(this, "Use \"test:test\" for credentials. ", "Demo mode", JOptionPane.INFORMATION_MESSAGE);
-//        controller.add("loginDialog", "rootFrame");
-        controller.add("parentPanel");
+    }
 
-
+    @Override
+    protected void postConstruct() {
+        ((RootController)controller).addParentPanel();
     }
 
     public void addMenu(RootMenu rootMenu) {
@@ -58,7 +46,6 @@ public class RootFrame extends AbstractFrame {
 
     @Override
     public void add(Window window) {
-        // getContentPane().remove(1);
         add((Component) window, BorderLayout.CENTER);
         repaint();
     }

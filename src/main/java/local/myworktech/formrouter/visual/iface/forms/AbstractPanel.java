@@ -12,11 +12,13 @@ public abstract class AbstractPanel extends JPanel implements Panel {
     @Override
     public void view() {
         initComponents();
+        postConstruct();
     }
 
     @Override
     public abstract void add(Window window);
 
     protected abstract void initComponents();
+
+    protected abstract void postConstruct();
 }
-//todo implement postconstruct
