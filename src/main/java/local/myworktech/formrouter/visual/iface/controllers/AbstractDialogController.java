@@ -1,13 +1,16 @@
 package local.myworktech.formrouter.visual.iface.controllers;
 
 import local.myworktech.formrouter.service.Context;
+import org.apache.log4j.Logger;
 
+import java.awt.*;
 import java.text.MessageFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 
 public abstract class AbstractDialogController extends AbstractController {
+
+    protected Logger logger = Logger.getLogger(getClass());
 
     public AbstractDialogController(Context context) {
         super(context);
@@ -22,12 +25,10 @@ public abstract class AbstractDialogController extends AbstractController {
     public abstract void createWindow(String owner);
 
     @Override
-    public void add(String childWindow, String ownerWindow) {
-        System.out.println(MessageFormat.format("INFO: Creating dialog {0} on the {1}", childWindow, ownerWindow));
-        Controller childController = router.get(childWindow);
-        childController.createWindow(ownerWindow);
-//        window.add(childController.getWindow());
-        childController.getWindow().view();
+    public void addDialog(String ownerWindow) {
+        createWindow(ownerWindow);
+        logger.info(MessageFormat.format("Creating dialog {0} on the {1}", ((Component) this.getWindow()).getName(), ownerWindow));
+        getWindow().view();
     }
 
 }

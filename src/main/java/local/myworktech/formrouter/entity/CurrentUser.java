@@ -1,7 +1,5 @@
 package local.myworktech.formrouter.entity;
 
-import java.util.Observable;
-
 public class CurrentUser {
 
     private User currentUser;

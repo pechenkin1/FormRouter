@@ -11,7 +11,6 @@ import local.myworktech.formrouter.entity.User;
 import local.myworktech.formrouter.visual.iface.controllers.Controller;
 import local.myworktech.formrouter.visual.iface.forms.AbstractPanel;
 import local.myworktech.formrouter.visual.iface.forms.Window;
-import local.myworktech.formrouter.visual.impl.userInfoPanel.create.CreateUserPanelController;
 
 import javax.swing.*;
 
@@ -53,7 +52,6 @@ public abstract class AbstractEditUserInfoPanel extends AbstractPanel {
         user.getCredentials().setPassword(passwordField.getText());
         return user;
     }
-
 
 
     @Override
@@ -162,6 +160,7 @@ public abstract class AbstractEditUserInfoPanel extends AbstractPanel {
     private JTextField emailTextField;
     private JLabel label8;
     private JTextField phoneTextField;
+
     public AbstractEditUserInfoPanel(Controller controller) {
         super(controller);
     }

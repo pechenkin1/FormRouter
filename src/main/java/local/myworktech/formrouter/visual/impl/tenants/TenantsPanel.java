@@ -7,7 +7,7 @@ package local.myworktech.formrouter.visual.impl.tenants;
 import info.clearthought.layout.TableLayout;
 import info.clearthought.layout.TableLayoutConstraints;
 import local.myworktech.formrouter.visual.iface.controllers.Controller;
-import local.myworktech.formrouter.visual.iface.forms.*;
+import local.myworktech.formrouter.visual.iface.forms.AbstractPanel;
 import local.myworktech.formrouter.visual.iface.forms.Window;
 
 import javax.swing.*;

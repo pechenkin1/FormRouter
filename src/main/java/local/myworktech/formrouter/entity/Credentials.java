@@ -1,11 +1,19 @@
 package local.myworktech.formrouter.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
-@Data
-@AllArgsConstructor
-public class Credentials {
+import javax.persistence.*;
+
+@Getter
+@Setter
+@Entity
+@NoArgsConstructor
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"username"}))
+public class Credentials extends PersistableEntity{
+
+    @Id
+    @GeneratedValue
+    private Integer id;
 
     private String username;
     private String password;
@@ -14,4 +22,8 @@ public class Credentials {
 
     }
 
+    public Credentials(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 }

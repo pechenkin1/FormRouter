@@ -6,7 +6,7 @@ public interface Controller {
 
     void add(String childWindow);
 
-    void add(String childWindow, String ownerWindow);
+    void addDialog(String ownerWindow);
 
     /**
      * Create window owned by this controller
@@ -15,6 +15,7 @@ public interface Controller {
 
     /**
      * Create window owned by this controller, with owner window
+     *
      * @param owner
      */
     void createWindow(String owner);

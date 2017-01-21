@@ -4,6 +4,7 @@ import local.myworktech.formrouter.entity.Credentials;
 import local.myworktech.formrouter.entity.User;
 import local.myworktech.formrouter.exception.UserNotExistsException;
 import local.myworktech.formrouter.exception.WrongPasswordException;
+import local.myworktech.formrouter.repository.UserRepository;
 import local.myworktech.formrouter.service.Context;
 import local.myworktech.formrouter.visual.iface.controllers.AbstractDialogController;
 
@@ -11,6 +12,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class LoginController extends AbstractDialogController {
+
+
+
     public LoginController(Context context) {
         super(context);
     }
@@ -26,9 +30,9 @@ public class LoginController extends AbstractDialogController {
 
     public void login(Credentials credentials) {
         try {
-            checkExistence(credentials);
-            authenticate(credentials);
-            context.setLoggedInUser(User.getTestUser());
+            User user = checkExistence(credentials);
+            authenticate(credentials, user);
+            context.setLoggedInUser(user);
             ((Window) window).dispose();
         } catch (UserNotExistsException | WrongPasswordException exception) {
             exception.printStackTrace();
@@ -36,24 +40,14 @@ public class LoginController extends AbstractDialogController {
         }
     }
 
-    private void authenticate(Credentials credentials) throws WrongPasswordException {
-        if (!validCreds(credentials))
+    private User checkExistence(Credentials credentials) throws UserNotExistsException {
+        String username = credentials.getUsername();
+        return context.getUserRepository().findByLogin(username);
+    }
+
+    private void authenticate(Credentials credentials, User user) throws WrongPasswordException {
+       if (!credentials.getPassword().equals(user.getCredentials().getPassword()))
             throw new WrongPasswordException(credentials);
     }
 
-    private void checkExistence(Credentials credentials) throws UserNotExistsException {
-        String username = credentials.getUsername();
-        if (!hasLogin(username))
-            throw new UserNotExistsException(username);
-    }
-
-    private boolean hasLogin(String login) {
-        return login.equals(testUser.getCredentials().getUsername());
-    }
-
-    private boolean validCreds(Credentials credentials) {
-        return credentials.getPassword().equals(testUser.getCredentials().getPassword());
-    }
-
-    private User testUser = User.getTestUser();
 }

@@ -4,8 +4,6 @@
 
 package local.myworktech.formrouter.visual.impl.login;
 
-import java.awt.event.*;
-import javax.swing.border.*;
 import info.clearthought.layout.TableLayout;
 import info.clearthought.layout.TableLayoutConstraints;
 import local.myworktech.formrouter.entity.Credentials;
@@ -16,12 +14,14 @@ import local.myworktech.formrouter.visual.iface.forms.Window;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
+import java.awt.event.*;
 
 public class LoginDialog extends AbstractDialog {
 
     public LoginDialog(Controller controller, Window owner) {
         super(controller, owner);
+        setName("loginDialog");
+        setTitle("Login dialog");
     }
 
     @Override
@@ -33,7 +33,7 @@ public class LoginDialog extends AbstractDialog {
         dispose();
         Router router = Router.getInstance();
         Controller signupDialog = router.get("signupDialog");
-        signupDialog.add("signupDialog", "rootFrame");
+        signupDialog.addDialog("rootFrame");
     }
 
     private void quitButtonActionPerformed(ActionEvent e) {
@@ -46,12 +46,12 @@ public class LoginDialog extends AbstractDialog {
     }
 
     private void passwordFieldKeyPressed(KeyEvent e) {
-        if (e.getKeyCode()==10)
+        if (e.getKeyCode() == 10)
             loginButton.doClick();
     }
 
     private void loginFieldKeyPressed(KeyEvent e) {
-        if (e.getKeyCode()==10)
+        if (e.getKeyCode() == 10)
             passwordField.requestFocus();
     }
 
@@ -77,8 +77,6 @@ public class LoginDialog extends AbstractDialog {
         setMinimumSize(new Dimension(200, 50));
         setModal(true);
         setResizable(false);
-        setName("loginDialog");
-        setTitle("Login dialog");
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override
@@ -119,11 +117,11 @@ public class LoginDialog extends AbstractDialog {
             loginPanel.setPreferredSize(new Dimension(311, 55));
             loginPanel.setBorder(null);
             loginPanel.setMaximumSize(new Dimension(311, 55));
-            loginPanel.setLayout(new TableLayout(new double[][] {
-                {59, 130, 112},
-                {TableLayout.PREFERRED, 20, 20}}));
-            ((TableLayout)loginPanel.getLayout()).setHGap(5);
-            ((TableLayout)loginPanel.getLayout()).setVGap(5);
+            loginPanel.setLayout(new TableLayout(new double[][]{
+                    {59, 130, 112},
+                    {TableLayout.PREFERRED, 20, 20}}));
+            ((TableLayout) loginPanel.getLayout()).setHGap(5);
+            ((TableLayout) loginPanel.getLayout()).setVGap(5);
 
             //---- label1 ----
             label1.setText("Login");

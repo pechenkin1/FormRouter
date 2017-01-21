@@ -4,9 +4,7 @@ import local.myworktech.formrouter.visual.iface.controllers.Controller;
 import local.myworktech.formrouter.visual.iface.forms.AbstractPanel;
 import local.myworktech.formrouter.visual.iface.forms.Window;
 
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 
 public class ParentPanel extends AbstractPanel {
 
@@ -51,6 +49,7 @@ public class ParentPanel extends AbstractPanel {
 
     @Override
     protected void postConstruct() {
+        setName("parentPanel");
 
     }
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

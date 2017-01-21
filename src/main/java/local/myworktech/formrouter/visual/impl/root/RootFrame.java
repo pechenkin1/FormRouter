@@ -4,7 +4,6 @@ import local.myworktech.formrouter.visual.iface.controllers.Controller;
 import local.myworktech.formrouter.visual.iface.forms.AbstractFrame;
 import local.myworktech.formrouter.visual.iface.forms.Window;
 import local.myworktech.formrouter.visual.impl.root.menu.RootMenu;
-import local.myworktech.formrouter.visual.impl.root.menu.RootMenuController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,7 +34,7 @@ public class RootFrame extends AbstractFrame {
 
     @Override
     protected void postConstruct() {
-        ((RootController)controller).addParentPanel();
+        ((RootController) controller).addParentPanel();
     }
 
     public void addMenu(RootMenu rootMenu) {

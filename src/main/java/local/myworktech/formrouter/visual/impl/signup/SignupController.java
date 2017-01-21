@@ -5,8 +5,6 @@ import local.myworktech.formrouter.service.Router;
 import local.myworktech.formrouter.visual.iface.controllers.AbstractDialogController;
 import local.myworktech.formrouter.visual.iface.controllers.Controller;
 
-import javax.swing.*;
-
 public class SignupController extends AbstractDialogController {
     public SignupController(Context context) {
         super(context);
@@ -21,7 +19,7 @@ public class SignupController extends AbstractDialogController {
         Router router = Router.getInstance();
 //        ((JFrame) router.get("rootFrame").getWindow()).repaint(); //todo Delete or retain? check all occurences. Collapse repaint() into Router.class
         Controller loginDialog = router.get("loginDialog");
-        loginDialog.add("loginDialog", "rootFrame");
+        loginDialog.addDialog("rootFrame");
     }
 }
 

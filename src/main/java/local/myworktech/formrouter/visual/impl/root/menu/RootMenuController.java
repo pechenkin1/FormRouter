@@ -8,8 +8,6 @@ import lombok.Getter;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Observable;
-import java.util.Observer;
 
 public class RootMenuController {
 
@@ -68,14 +66,14 @@ public class RootMenuController {
         Router router = Router.getInstance();
         ((JFrame) router.get("rootFrame").getWindow()).repaint();
         Controller loginDialog = router.get("loginDialog");
-        loginDialog.add("loginDialog", "rootFrame");
+        loginDialog.addDialog("rootFrame");
     }
 
     public void editUserInfo() {
         Router router = Router.getInstance();
         ((JFrame) router.get("rootFrame").getWindow()).repaint();
         Controller userInfoDialog = router.get("userInfoDialog");
-        userInfoDialog.add("userInfoDialog", "rootFrame");
+        userInfoDialog.addDialog("rootFrame");
     }
 
     public void showTenants() {

@@ -31,7 +31,7 @@ public class RootMenu {
     }
 
     private void loginMenuItemActionPerformed(ActionEvent e) {
-       rootMenuController.showLoginDialog();
+        rootMenuController.showLoginDialog();
     }
 
     private void logoutMenuItemActionPerformed(ActionEvent e) {
@@ -44,7 +44,7 @@ public class RootMenu {
     }
 
     private void tenantsMenuItemActionPerformed(ActionEvent e) {
-       rootMenuController.showTenants();
+        rootMenuController.showTenants();
     }
 
     private void initComponents() {
@@ -113,6 +113,7 @@ public class RootMenu {
         }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
+
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - 123 123
     private JMenuBar rootMenuBar;
